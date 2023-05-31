@@ -33,7 +33,7 @@ def formulario():
 
     try:
         inserir_dados(nome , email , idade , escola)
-        return "Dados do formulário recebidos com sucesso!"
+        return render_template('formulario.html')
     except:
         return "Os dados não foram enviados"
 
