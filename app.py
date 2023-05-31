@@ -1,21 +1,14 @@
 from flask import Flask, render_template, request
+from models.config import DB_CONFIG
 import mysql.connector
 
 
 app = Flask(__name__)
 
 
-# Configurações do banco de dados
-db_config = {
-    'host': 'aws.connect.psdb.cloud',
-    'user': 'jqckc3sb8ggvblsykkhp',
-    'password': 'pscale_pw_Tef8Ao7JbElGKRJF5OHHqEvaVFocf0X1VjLmGmBIC2D',
-    'database': 'vocacional-tech'
-}
-
 # Função para inserir os dados do formulário no banco de dados
 def inserir_dados(nome, email, idade, escola):
-    connection = mysql.connector.connect(**db_config)
+    connection = mysql.connector.connect(**DB_CONFIG)
     cursor = connection.cursor()
 
     query = "INSERT INTO usuarios (nome, email, idade, escola) VALUES (%s, %s, %s, %s)"
