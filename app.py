@@ -35,8 +35,7 @@ def formulario():
         inserir_dados(nome , email , idade , escola)
         return render_template('questionario.html')
     except:
-        return render_template('questionario.html')
-        #return "Os dados não foram enviados"
+        return "Os dados não foram enviados"
 
 if __name__ == '__main__':
     app.run()

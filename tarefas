@@ -4,9 +4,9 @@ procurar tamplated de questionários OK
     https://github.com/WilliamDosSantos/quiz-app_javascript ESCOLHIDO
 
 Atualizar tamplated dos questionários:
-    mudar as cores PRETO - rgb(34, 34, 34); /  ROXO - rgb(132, 14, 201); / BRANCO
-    centralizar no meio para celular
+    mudar as cores PRETO - rgb(34, 34, 34); /  ROXO - rgb(132, 14, 201); / BRANCO OK
+    centralizar no meio para celular OK
 
-Eliminar o back-end do script
+Eliminar o back-end do script OK
 não permitir a entrada de formularios vazios
 Integrar o formulário com as árvores de pyhton
