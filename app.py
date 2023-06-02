@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request , jsonify
+import json
 from models.config import DB_CONFIG
 import mysql.connector
 
@@ -37,6 +38,24 @@ def formulario():
     except:
         return render_template('questionario.html')
         #return "Os dados não foram enviados"
+
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    data = request.get_json()
+    values = data['values']
+
+    # Contadores de perguntas corretas e total de perguntas
+    total_questions = len(values)
+
+    response = {
+        'questionsCorrect': values,
+        'totalQuestions': total_questions
+    }  
+    print(json.dumps(response, indent=4))
+
+    return jsonify(response)
+
 
 if __name__ == '__main__':
     app.run()
