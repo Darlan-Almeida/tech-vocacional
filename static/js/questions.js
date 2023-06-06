@@ -1,6 +1,6 @@
 export default [
   {
-    question: "1- Você gosta de resolver problemas e desafios que envolvem lógica e raciocínio?",
+    question:  "Você gosta de resolver problemas e desafios que envolvem lógica e raciocínio?",
     answers: [
       { option: "nem um pouco", value: "npouco" },
       { option: "um pouco", value: "upouco" },
@@ -39,7 +39,7 @@ export default [
     ],
   },
   {
-    question: "5- Qual atividade você desejaria resolver: 'Interpretação de gráfico', 'Resolver um enigma', 'Resumo de uma palestra', 'pintar um quadro'",
+    question: "Qual atividade você desejaria resolver: 'Interpretação de gráfico', 'Resolver um enigma', 'Resumo de uma palestra', 'pintar um quadro'",
     answers: [
       { option: "Interpretação de gráfico", value: "grafico" },
       { option: "Resolver um enigma", value: "enigma" },
