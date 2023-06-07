@@ -1,25 +1,11 @@
 from flask import Flask, render_template, request , jsonify
 import json
-from models.config import DB_CONFIG
 from control.test import realizar_teste
-import mysql.connector
+from control.crud import inserir_dados
 
 
 app = Flask(__name__)
 
-
-# Função para inserir os dados do formulário no banco de dados
-def inserir_dados(nome, email, idade, escola):
-    connection = mysql.connector.connect(**DB_CONFIG)
-    cursor = connection.cursor()
-
-    query = "INSERT INTO usuarios (nome, email, idade, escola) VALUES (%s, %s, %s, %s)"
-    values = (nome, email, idade, escola)
-    cursor.execute(query, values)
-
-    connection.commit()
-    cursor.close()
-    connection.close()
 
 
 @app.route('/')
@@ -37,7 +23,8 @@ def formulario():
         inserir_dados(nome , email , idade , escola)
         return render_template('questionario.html')
     except:
-        return "Os dados não foram enviados"
+        return "dados não recebidos"
+
 
 
 @app.route('/submit', methods=['POST'])
@@ -50,7 +37,29 @@ def submit():
 
 
     print(result)
-    return (values)
+
+    return values
+    
+    """if(values == "analista"):
+        return render_template('profissoes/analista.html')
+
+    if(values == "back"):
+        return render_template('profissoes/back.html')
+
+    if(values == "dados"):
+        return render_template('profissoes/dados.html')
+
+    if(values == "engenheiro"):
+        return render_template('profissoes/engenheiro.html')
+
+    if(values == "front"):
+        return render_template('profissoes/front.html')
+
+    if(values == "back"):
+        return render_template('profissoes/back.html')"""
+    
+
+
 
 if __name__ == '__main__':
     app.run()

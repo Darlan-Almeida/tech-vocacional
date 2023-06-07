@@ -47,7 +47,7 @@ main {
 .answers {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
 .agradecimento {
@@ -60,15 +60,18 @@ main {
   color: white;
 }
 
-button{ width: 100%;
+button {
+  margin-top: 10px;
+  width: 100%;
   text-align: start;
-  padding: 5px;
+  padding: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   background-color: rgb(132, 14, 201);
   color: white;
 }
+
 
 .finish {
   display: none;
