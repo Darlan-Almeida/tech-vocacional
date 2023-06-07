@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request , jsonify
 import json
 from models.config import DB_CONFIG
+from control.test import realizar_teste
 import mysql.connector
 
 
@@ -36,26 +37,20 @@ def formulario():
         inserir_dados(nome , email , idade , escola)
         return render_template('questionario.html')
     except:
-        return render_template('questionario.html')
-        #return "Os dados não foram enviados"
+        return "Os dados não foram enviados"
 
 
 @app.route('/submit', methods=['POST'])
 def submit():
     data = request.get_json()
     values = data['values']
+    print(values)
 
-    # Contadores de perguntas corretas e total de perguntas
-    total_questions = len(values)
+    result = realizar_teste(values)
 
-    response = {
-        'questionsCorrect': values,
-        'totalQuestions': total_questions
-    }  
-    print(json.dumps(response, indent=4))
 
-    return jsonify(response)
-
+    print(result)
+    return (values)
 
 if __name__ == '__main__':
     app.run()

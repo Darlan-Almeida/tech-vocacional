@@ -2,7 +2,7 @@
 
 DB_CONFIG = {
     'host': 'aws.connect.psdb.cloud',
-    'user': '2yxeaex6hjwtoaynkm3j',
-    'password': 'pscale_pw_bY0KzvBmrDRLw2mUpSmKtzYuWbbiH3o02ZorttdSXOy',
+    'user': 'qvje7mnin32h73apfdln',
+    'password': 'pscale_pw_92jLGwkL1AJU9SYjzotlCDoJi9yETYldoSS19lEmGMz',
     'database': 'vocacional-tech'
 }
