@@ -21,18 +21,28 @@ function nextQuestion(e) {
   }
 }
 
-function finish() {
-  textFinish.innerHTML = "Parabéns, você concluiu o questionário!";
-  content.style.display = "none";
-  contentFinish.style.display = "block";
-      
+function finish() {      
   const values = answers2;
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "/submit", true);
-  xhr.setRequestHeader("Content-Type", "application/json"); 
-  // Enviar o objeto JSON com os valores das questões
-  xhr.send(JSON.stringify({ values }));
+  
+  // Enviar os valores selecionados para o Python
+  fetch('/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ values })
+  })
+  .then(response => response.json())
+  .then(data => {
+    const result = data.result; // Receber o resultado do Python
+    window.location.href = `/resultado/${result}`; // Redirecionar para a página de resultado
+  })
+  .catch(error => {
+    console.error('Erro:', error);
+  });
 }
+
+
 
 function loadQuestion() {
   console.log(currentIndex)

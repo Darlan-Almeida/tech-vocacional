@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request , jsonify
+from flask import Flask, render_template, request , jsonify , redirect, url_for
 import json
 from control.test import realizar_teste
 from control.crud import inserir_dados
@@ -23,7 +23,7 @@ def formulario():
         inserir_dados(nome , email , idade , escola)
         return render_template('questionario.html')
     except:
-        return "dados não recebidos"
+        return render_template('questionario.html')
 
 
 
@@ -31,35 +31,19 @@ def formulario():
 def submit():
     data = request.get_json()
     values = data['values']
-    print(values)
 
     result = realizar_teste(values)
 
 
-    print(result)
+    print(values , result)
 
-    return values
-    
-    """if(values == "analista"):
-        return render_template('profissoes/analista.html')
-
-    if(values == "back"):
-        return render_template('profissoes/back.html')
-
-    if(values == "dados"):
-        return render_template('profissoes/dados.html')
-
-    if(values == "engenheiro"):
-        return render_template('profissoes/engenheiro.html')
-
-    if(values == "front"):
-        return render_template('profissoes/front.html')
-
-    if(values == "back"):
-        return render_template('profissoes/back.html')"""
-    
+    return jsonify(result=result)
 
 
+
+@app.route('/resultado/<result>')
+def resultado(result):
+    return render_template('resultado.html', result=result)
 
 if __name__ == '__main__':
     app.run()
