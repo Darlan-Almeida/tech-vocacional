@@ -44,8 +44,8 @@ def realizar_teste(test_data):
         [dict["upouco"], dict["pessima"], dict["boa"], dict["liderar"], dict["grafico"]]
     ]
 
-    rotulos = ["back", "back", "back", "front", "front", "front", "full", "full", "full", "dados", "dados", "dados",
-               "analista", "analista", "analista", "engenheiro", "engenheiro", "engenheiro"]
+    rotulos = ["Desenvolvedor Back-end", "Desenvolvedor Back-end", "Desenvolvedor Back-end", "Desenvolvedor Front-end", "Desenvolvedor Front-end", "Desenvolvedor Front-end", "Desenvolvedor Fullstack", "Desenvolvedor Fullstack", "Desenvolvedor Fullstack", "Profissional de Dados", " Profissional de Dados", " Profissional de Dados",
+               "Analista de Sistemas", "Analista de Sistemas", "Analista de Sistemas", "Engenheiro de Software", "Engenheiro de Software", "Engenheiro de Software"]
 
     # Criando o classificador de árvore de decisão
     classificador = tree.DecisionTreeClassifier()

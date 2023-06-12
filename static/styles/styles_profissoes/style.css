@@ -18,7 +18,10 @@ header{
 
 h1{
     font-weight: 200;
+    margin-bottom: 10%;
 }
+
+
 
 main{
     display: flex;
@@ -44,22 +47,9 @@ p{
 
 img{
     max-width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
-
-form{
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-}
-
-form [type="submit"]{
-    height: 50px;
-    width: 50%;
-    background-color: rgb(132, 14, 201);
-    color: white;
-    font-weight: bold;
-}
-
 footer {
     margin-top: 60px; 
     bottom: 0;
@@ -90,7 +80,7 @@ footer {
     margin-bottom: 30px;
     text-align: center;
     text-transform: uppercase;
-    color: #0505A9;
+    color:rgb(132, 14, 201);
     font-size: 16px;
     font-weight: bold;
     background-color: transparent;
@@ -110,7 +100,7 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    border: 2px solid #0505A9;
+    border: 2px solid rgb(132, 14, 201);;
     border-radius: 30px;
   }
   .blob-btn:after {
@@ -156,7 +146,7 @@ footer {
     top: 2px;
     width: 25%;
     height: 100%;
-    background: #0505A9;
+    background: rgb(132, 14, 201);
     border-radius: 100%;
     transform: translate3d(0, 150%, 0) scale(1.7);
     transition: transform 0.45s;
@@ -189,4 +179,8 @@ footer {
     .blob-btn:hover .blob-btn__blob {
       transform: translateZ(0) scale(1.4);
     }
+  }
+
+  a{
+    color: rgb(132, 14, 201);
   }
