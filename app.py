@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request , jsonify , redirect, url_for
+from flask import Flask, render_template, request , jsonify
 import json
 from control.test import realizar_teste
 from control.crud import inserir_dados
@@ -23,7 +23,7 @@ def formulario():
         inserir_dados(nome , email , idade , escola)
         return render_template('questionario.html')
     except:
-        return render_template('questionario.html')
+        return "render_template('questionario.html')"
 
 
 

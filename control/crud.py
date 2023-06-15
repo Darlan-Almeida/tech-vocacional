@@ -1,9 +1,10 @@
-import mysql.connector
+import pg8000
 from models.config import DB_CONFIG
+
 
 # Função para inserir os dados do formulário no banco de dados
 def inserir_dados(nome, email, idade, escola):
-    connection = mysql.connector.connect(**DB_CONFIG)
+    connection = pg8000.connect(**DB_CONFIG)
     cursor = connection.cursor()
 
     query = "INSERT INTO usuarios (nome, email, idade, escola) VALUES (%s, %s, %s, %s)"

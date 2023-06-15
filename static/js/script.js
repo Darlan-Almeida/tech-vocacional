@@ -1,9 +1,6 @@
 const question = document.querySelector(".question");
 const answers = document.querySelector(".answers");
 const spnQtd = document.querySelector(".spnQtd");
-const textFinish = document.querySelector(".finish span");
-const content = document.querySelector(".content");
-const contentFinish = document.querySelector(".finish");
 
 import questions from "./questions.js";
 
@@ -23,7 +20,7 @@ function nextQuestion(e) {
 
 function finish() {      
   const values = answers2;
-  
+
   // Enviar os valores selecionados para o Python
   fetch('/submit', {
     method: 'POST',
@@ -39,9 +36,9 @@ function finish() {
   })
   .catch(error => {
     console.error('Erro:', error);
-  });
-}
+  })
 
+}
 
 
 function loadQuestion() {
