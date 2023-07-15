@@ -4,4 +4,3 @@ DB_CONFIG = {
     'user': 'jzujioof',
     'password': 'NSwX4iqTlwIipHEnd-C0JIHKe24_CwJ6'
 }
-

@@ -7,8 +7,30 @@ def inserir_dados(nome, email, idade, escola):
     connection = pg8000.connect(**DB_CONFIG)
     cursor = connection.cursor()
 
-    query = "INSERT INTO usuarios (nome, email, idade, escola) VALUES (%s, %s, %s, %s)"
+    query = "INSERT INTO usuarios (nome, email, idade, escola) VALUES (%s, %s, %s, %s) RETURNING id"
     values = (nome, email, idade, escola)
+    cursor.execute(query, values)
+
+
+
+    connection.commit()
+
+    # Recupera o ID do usuário inserido
+    usuario_id = cursor.fetchone()[0]
+
+    cursor.close()
+    connection.close()
+
+    return usuario_id
+
+
+
+def inserir_resposta( usuario_id, pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao, avaliacao):
+    connection = pg8000.connect(**DB_CONFIG)
+    cursor = connection.cursor()
+
+    query = "INSERT INTO questionarios ( id_usuario,pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao, avaliacao) VALUES (%s, %s, %s, %s, %s , %s, %s, %s)"
+    values = (usuario_id, pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao, avaliacao)
     cursor.execute(query, values)
 
     connection.commit()
