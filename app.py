@@ -17,6 +17,7 @@ def formulario():
 
     try:
         usuario_id = inserir_dados(nome, email, idade, escola)
+        print(usuario_id)
         return render_template('questionario.html')
     except:
         return "KeyError"
@@ -29,7 +30,7 @@ def submit():
 
     result = realizar_teste(values)
 
-    inserir_resposta(342, values[0], values[1], values[2], values[3], values[4], result, "boa")
+    inserir_resposta(usuario_id, values[0], values[1], values[2], values[3], values[4], result, "boa")
 
     return jsonify(result=result)
 
