@@ -7,6 +7,10 @@ import questions from "./questions.js";
 let currentIndex = 0;
 let answers2 = []
 
+let usuario_id = document.getElementById("usuario_id").value;
+
+
+
 function nextQuestion(e) {
   answers2.push(e.target.getAttribute("data-value"))
 
@@ -15,19 +19,19 @@ function nextQuestion(e) {
     loadQuestion();
   } else {
     finish();
+    // getUsuario_id()
   }
 }
 
 function finish() {      
   const values = answers2;
-
   // Enviar os valores selecionados para o Python
   fetch('/submit', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ values })
+    body: JSON.stringify({ values, usuario_id })
   })
   .then(response => response.json())
   .then(data => {

@@ -4,6 +4,7 @@ from control.crud import inserir_dados, inserir_resposta
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -17,16 +18,21 @@ def formulario():
 
     try:
         usuario_id = inserir_dados(nome, email, idade, escola)
-        print(usuario_id)
-        return render_template('questionario.html')
+        return render_template('questionario.html', usuario_id=usuario_id)
     except:
         return "KeyError"
 
 
 @app.route('/submit/', methods=['POST'])
 def submit():
+
+    # usuario_id = int(request.form.get('usuario_id'))  # Obter o ID do usuário do formulário
+
     data = request.get_json()
     values = data['values']
+    usuario_id = data['usuario_id']
+    print(values)
+    print(usuario_id)
 
     result = realizar_teste(values)
 

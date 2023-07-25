@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Questionário</title>
 
   <link href="/static/styles_forms/style.css" rel="stylesheet">
 </head>
@@ -14,9 +14,13 @@
       <span class="spnQtd"></span>
       <span class="question"></span>
       <div class="answers"></div>
-      <div class="loading" style="display: none;">    
+      <div class="loading" style="display: none;"></div>
+    </div>
+
+    <!-- Campo oculto para armazenar o valor do usuario_id -->
+    <input type="hidden" id="usuario_id" value="{{ usuario_id }}">
   </main>
-  
-    <script src="/static/js/script.js" type="module"></script>
+
+  <script src="/static/js/script.js" type="module"></script>
 </body>
 </html>
