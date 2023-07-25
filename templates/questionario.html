@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,27 @@
   <title>Questionário</title>
 
   <link href="/static/styles_forms/style.css" rel="stylesheet">
+  <link href="/static/styles_forms/loading.css" rel="stylesheet">
+
 </head>
+
 <body>
   <main>
     <div class="content">
       <span class="spnQtd"></span>
       <span class="question"></span>
       <div class="answers"></div>
-      <div class="loading" style="display: none;"></div>
+      <div class="loading-container" style="display: none;">
+        <div class="dominoes">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
     </div>
+
 
     <!-- Campo oculto para armazenar o valor do usuario_id -->
     <input type="hidden" id="usuario_id" value="{{ usuario_id }}">
@@ -23,4 +36,5 @@
 
   <script src="/static/js/script.js" type="module"></script>
 </body>
+
 </html>

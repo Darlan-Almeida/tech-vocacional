@@ -1,6 +1,11 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 DB_CONFIG = {
-    'host': 'chunee.db.elephantsql.com',
-    'database': 'jzujioof',
-    'user': 'jzujioof',
-    'password': 'NSwX4iqTlwIipHEnd-C0JIHKe24_CwJ6'
+    'host': os.environ.get("host"),
+    'database': os.environ.get("database"),
+    'user': os.environ.get("user"),
+    'password': os.environ.get("password")
 }

@@ -8,6 +8,8 @@ let currentIndex = 0;
 let answers2 = []
 
 let usuario_id = document.getElementById("usuario_id").value;
+let loading = document.querySelector(".loading-container");
+
 
 
 
@@ -25,6 +27,7 @@ function nextQuestion(e) {
 
 function finish() {      
   const values = answers2;
+  loading.style.display = 'block'
   // Enviar os valores selecionados para o Python
   fetch('/submit', {
     method: 'POST',
@@ -39,9 +42,10 @@ function finish() {
     window.location.href = `/resultado/${result}`; // Redirecionar para a página de resultado
   })
   .catch(error => {
+    loading.style.display = 'none'
+    alert('Erro: ' + error.message)
     console.error('Erro:', error);
   })
-
 }
 
 
