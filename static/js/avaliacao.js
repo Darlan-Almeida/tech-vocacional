@@ -11,6 +11,7 @@ function myFunctionRed() {
     clicado = true;
     opiniao = "dislike"; // Inverte para "dislike" quando o botão vermelho é clicado
     mostrarOpiniao();
+    enviar_opiniao(opiniao);
   }
 }
 
@@ -22,9 +23,36 @@ function myFunctionGreen() {
     clicado = true;
     opiniao = "like"; // Inverte para "like" quando o botão verde é clicado
     mostrarOpiniao();
+    enviar_opiniao(opiniao);
   }
 }
 
 function mostrarOpiniao() {
   console.log(opiniao)
+}
+
+/*
+function enviarOpiniao(opiniao) {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", "/resultado", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log("Opinião enviada com sucesso!");
+      }
+  };
+  xhr.send(JSON.stringify({opiniao}));
+}*/
+
+function enviar_opiniao(opiniao){
+  // Enviar os valores selecionados para o Python
+  fetch('/receber_opiniao', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ opiniao })
+  })
+
+
 }
