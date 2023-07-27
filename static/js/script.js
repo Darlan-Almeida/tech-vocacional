@@ -11,8 +11,6 @@ let usuario_id = document.getElementById("usuario_id").value;
 let loading = document.querySelector(".loading-container");
 
 
-
-
 function nextQuestion(e) {
   answers2.push(e.target.getAttribute("data-value"))
 
@@ -29,7 +27,7 @@ function finish() {
   const values = answers2;
   loading.style.display = 'block'
   // Enviar os valores selecionados para o Python
-  fetch('/submit', {
+  fetch('/submit/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
