@@ -10,11 +10,6 @@ function myFunctionRed() {
     btn2.classList.toggle('red');
     clicado = true;
     opiniao = "dislike"; // Inverte para "dislike" quando o botão vermelho é clicado
-
-    btn1.onclick = null; 
-    btn2.classList.toggle('red');
-    clicado = true;
-    opiniao = "dislike"; 
     mostrarOpiniao();
   }
 }
@@ -26,10 +21,6 @@ function myFunctionGreen() {
     btn1.classList.toggle('green');
     clicado = true;
     opiniao = "like"; // Inverte para "like" quando o botão verde é clicado
-    btn2.onclick = null; 
-    btn1.classList.toggle('green');
-    clicado = true;
-    opiniao = "like"; 
     mostrarOpiniao();
   }
 }
@@ -37,4 +28,3 @@ function myFunctionGreen() {
 function mostrarOpiniao() {
   console.log(opiniao)
 }
-
