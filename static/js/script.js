@@ -37,7 +37,7 @@ function finish() {
   .then(response => response.json())
   .then(data => {
     const result = data.result; // Receber o resultado do Python
-    window.location.href = `/resultado/${result}`; // Redirecionar para a página de resultado
+    window.location.href = `/resultado/${result}?usuario_id=${usuario_id}`; // Redirecionar para a página de resultado
   })
   .catch(error => {
     loading.style.display = 'none'

@@ -1,5 +1,6 @@
 var btn1 = document.querySelector('#green');
 var btn2 = document.querySelector('#red');
+var usuario_id = document.querySelector('#usuario_id').value;
 var clicado = false;
 var opiniao = null;
 
@@ -46,12 +47,12 @@ function enviarOpiniao(opiniao) {
 
 function enviar_opiniao(opiniao){
   // Enviar os valores selecionados para o Python
-  fetch('/receber_opiniao', {
+  fetch('/receber_opiniao/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ opiniao })
+    body: JSON.stringify({ opiniao , usuario_id })
   })
 
 

@@ -39,14 +39,16 @@ def submit():
 
     inserir_resposta(usuario_id, values[0], values[1], values[2], values[3], values[4], result, "boa")
 
-    return jsonify(result=result)
+    return jsonify(result=result , usuario_id=usuario_id)
 
 
-@app.route('/resultado/<result>')
+@app.route('/resultado/<result>' , methods=['GET'])
 def resultado(result):
     descricao = ""
     imagem = ""
     link = ""
+
+    id = request.args.get("usuario_id")
 
     if result == "Desenvolvedor Back-end":
         descricao = "Um profissional especializado em desenvolvimento de software e sistemas que trabalha principalmente na parte do servidor, lidando com a lógica de negócios, bancos de dados e integração de sistemas"
@@ -79,16 +81,18 @@ def resultado(result):
         link = "https://blog.somostera.com/data-science/carreiras-em-dados-em-destaque-no-mercado"
         pass
 
-    return render_template('resultado.html', result=result, descricao=descricao, imagem=imagem, link=link)
+    return render_template('resultado.html', result=result, descricao=descricao, imagem=imagem, link=link, usuario_id=id)
+
 
 @app.route('/receber_opiniao/',methods=['POST', 'GET'])
 def receber_opiniao():
     if request.method == 'POST':
         data = request.get_json()
         opiniao = data.get('opiniao')
+        usuario_id = data.get('usuario_id')
         print(opiniao)
+        print(usuario_id)
         return jsonify({'message': 'Opinião recebida com sucesso'})
- 
-        
+
 if __name__ == '__main__':
     app.run()
