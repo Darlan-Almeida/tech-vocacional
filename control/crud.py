@@ -38,3 +38,18 @@ def inserir_resposta( usuario_id, pergunta1, pergunta2, pergunta3, pergunta4, pe
     connection.close()
 
     return "Cadastrado com sucesso"
+
+
+def inserir_opiniao( usuario_id, opiniao):
+    connection = pg8000.connect(**DB_CONFIG)
+    cursor = connection.cursor()
+
+    query = "INSERT INTO opiniao ( usuario_id, opiniao) VALUES (%s, %s)"
+    values = (usuario_id, opiniao)
+    cursor.execute(query, values)
+
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+    return "Cadastrado com sucesso"
