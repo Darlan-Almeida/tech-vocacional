@@ -25,12 +25,12 @@ def inserir_dados(nome, email, idade, escola):
 
 
 
-def inserir_resposta( usuario_id, pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao, avaliacao):
+def inserir_resposta( usuario_id, pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao):
     connection = pg8000.connect(**DB_CONFIG)
     cursor = connection.cursor()
 
-    query = "INSERT INTO questionarios ( id_usuario,pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao, avaliacao) VALUES (%s, %s, %s, %s, %s , %s, %s, %s)"
-    values = (usuario_id, pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao, avaliacao)
+    query = "INSERT INTO questionarios ( id_usuario,pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao) VALUES (%s, %s, %s, %s, %s , %s, %s)"
+    values = (usuario_id, pergunta1, pergunta2, pergunta3, pergunta4, pergunta5, profissao)
     cursor.execute(query, values)
 
     connection.commit()
@@ -44,7 +44,7 @@ def inserir_opiniao( usuario_id, opiniao):
     connection = pg8000.connect(**DB_CONFIG)
     cursor = connection.cursor()
 
-    query = "INSERT INTO opiniao ( usuario_id, opiniao) VALUES (%s, %s)"
+    query = "INSERT INTO opiniao ( id_usuario, opiniao) VALUES (%s, %s)"
     values = (usuario_id, opiniao)
     cursor.execute(query, values)
 

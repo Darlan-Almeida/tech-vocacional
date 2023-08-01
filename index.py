@@ -37,8 +37,7 @@ def submit():
 
     result = realizar_teste(values)
 
-    inserir_resposta(usuario_id, values[0], values[1], values[2], values[3], values[4], result, "boa")
-
+    inserir_resposta(usuario_id, values[0], values[1], values[2], values[3], values[4], result)
     return jsonify(result=result , usuario_id=usuario_id)
 
 
