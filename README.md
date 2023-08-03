@@ -87,7 +87,7 @@ Exemplo de situação que usa a arvores de decisão não tem uma trilha especifi
 
  # Tela de  resultado - Opção de opinar sobre o teste
 
- ![opcao de opinar](Readme's/opiniao.png)
+ ![opcao de opinar](Readme's/tela_opiniao.png)
 
 
 O usuário ao chegar na tela de resultado poderá dá like ou dislike, tais valores também são armazenados no Banco de dados. Os dados estão especificados da seguinte forma:
@@ -107,7 +107,7 @@ O usuário ao chegar na tela de resultado poderá dá like ou dislike, tais valo
 ### Autor
 ---
 
-![Imagem do autor](readmes/autor)
+![Imagem do autor](readmes/autor.jpeg)
 
 
 
