@@ -107,7 +107,7 @@ O usuário ao chegar na tela de resultado poderá dá like ou dislike, tais valo
 ### Autor
 ---
 
-![Imagem do autor](readmes/autor.jpeg)
+![Imagem do autor](readmes/autor.png)
 
 
 
