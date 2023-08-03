@@ -1,6 +1,15 @@
 # VOCACIONAL TECH
 
-Site que recebe respostas relacionadas aos perfil do usuário, e atráves de Machine Learning, retorna uma área como sugestão para o usuário
+Site que recebe respostas relacionadas ao perfil do usuário, e atráves de Machine Learning, retorna uma área, baseadas na aptidões do usuario, como sugestão.
+
+# Tecnologias utilizadas
+- ``Flask``
+- ``Python``
+-  ``Javascript``
+- ``HTML``
+- ``CSS``
+
+
 
 # Tela de cadastro:
 
@@ -26,72 +35,79 @@ O site, após a inserção dos dados, permite a respostas de pergutnas chaves qu
 
 # Processamento das respostas:
 
-O Processamento das respostas são feitos através de um campo da IA - Machine Learning -, que usa de uma tabela com possiveis predições para possiveis respostas. Porém, nem todas as possibilidades são satisfieta nessa tabela, aí que surge o Machine Learning, para retornar um resultado que não foi previsto na tabela, porém o resultado será aquele que dá mais "match" com a das definidas na tabela. Veja a tabela
+O Processamento das respostas são feitos através de um campo da IA - Machine Learning - usando árvores de decisão, que usa de uma tabela com possiveis predições para possiveis respostas. Porém, nem todas as possibilidades são satisfieta nessa tabela, aí que surge o Machine Learning, para retornar um resultado que não foi previsto na tabela, porém o resultado será aquele que dá mais "match" com a das definidas na tabela. Veja a tabela:
+
+| pergunta1     | pergunta2 | pergunta3 | pergunta4     | pergunta5     | profissao                |
+|---------------|-----------|-----------|---------------|---------------|--------------------------|
+| Razoavelmente | Ruim      | Mediana   | Pesquisa      | Enigma        | Desenvolvedor Back-end  |
+| Gosto         | Pessima   | Ruim      | Pesquisa      | Enigma        | Desenvolvedor Back-end  |
+| Adoro         | Mediana   | Pessima   | Apresentar    | Enigma        | Desenvolvedor Back-end  |
+| Upouco        | Otima     | Ruim      | Estilizar     | Pintar        | Desenvolvedor Front-end |
+| Razoavelmente | Boa       | Pessima   | Estilizar     | Pintar        | Desenvolvedor Front-end |
+| Razoavelmente | Otima     | Mediana   | Estilizar     | Pintar        | Desenvolvedor Front-end |
+| Razoavelmente | Otima     | Ruim      | Estilizar     | Enigma        | Desenvolvedor Fullstack |
+| Gosto         | Boa       | Mediana   | Pesquisa      | Pintar        | Desenvolvedor Fullstack |
+| Adoro         | Otima     | Mediana   | Pesquisa      | Enigma        | Desenvolvedor Fullstack |
+| Razoavelmente | Mediana   | Mediana   | Pesquisa      | Grafico       | Profissional de Dados   |
+| Upouco        | Ruim      | Ruim      | Pesquisa      | Grafico       | Profissional de Dados   |
+| Adoro         | Mediana   | Pessima   | Apresentar    | Grafico       | Profissional de Dados   |
+| Razoavelmente | Mediana   | Boa       | Pesquisa      | Resumo        | Analista de Sistemas    |
+| Upouco        | Ruim      | Otima     | Pesquisa      | Grafico       | Analista de Sistemas    |
+| Npouco        | Mediana   | Otima     | Apresentar    | Resumo        | Analista de Sistemas    |
+| Razoavelmente | Mediana   | Razoavelmente | Liderar    | Enigma        | Engenheiro de Software  |
+| Boa           | Ruim      | Ruim      | Liderar       | Resumo        | Engenheiro de Software  |
+| Upouco        | Pessima   | Boa       | Liderar       | Grafico       | Engenheiro de Software  |
+
+
+Exemplo de situação que usa a arvores de decisão não tem uma trilha especificada na tabela, fanzendo necessário o uso das predições do Machine Learning:
+
+
+| Pergunta     | Resposta           |
+|--------------|--------------------|
+| Pergunta1    | Adoro              |
+| Pergunta2    | Boa                |
+| Pergunta3    | Otima              |
+| Pergunta4    | Apresentar         |
+| Pergunta5    | Grafico            |
+| Profissão    | Desenvolvedor Fullstack  |
+
+ # Tela de  resultado
+
+ será apresentado sempre uma tela padrão para todos os resultados, porém muda algumas váriaveis:
+
+ - Nome do resultado
+ - Animação
+ - Descrição
+ - link de saiba mais
 
 
 
+ ![tela de resultados](Readme's/tela_resultado.png)
 
 
-A aplicação será utilizada para contabilidade, necessitando realizar operações de pesquisa para os gerentes de forma extremamente rápida. As operações mais importantes são:
-- Pesquisa pelo menor salário
-- Pesquisa pelo maior salário
-- Pesquisa pela mediana dos salários
+ # Tela de  resultado - Opção de opinar sobre o teste
 
-O usuário do sistema necessita obter o máximo de desempenho nas operações de pesquisa, para isto, utilizei a **ordenação binária** do salários com o metódo **Quick sort**.
+ ![opcao de opinar](Readme's/opiniao.png)
 
 
-Ao iniciar a aplicação, os dados já cadastrados ao longo das últimas execuções são carregados a partir de um arquivo csv.
-com isso, o usuário pode baixar a planilha e analisar os dados.
+O usuário ao chegar na tela de resultado poderá dá like ou dislike, tais valores também são armazenados no Banco de dados. Os dados estão especificados da seguinte forma:
 
 
-# Tutorial de uso da aplicação
-
-O sistema funciona por linha de comando, pois a aplicação tem foco, apenas, no desenvolvimento back-end.
-
-
-1- Crie um funcionário, o funcionário pode ser de três tipos:
-- Vendedor
-- Gerente
-- Secretário
-
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://www.youtube.com/watch?v=ycesdyiZGRk)
+| id_usuario     | opiniao           |
+|--------------|--------------------|
+| Integer    | Varchar(10)              |
 
 
-2- Salve os dados dos funcionários cadastrados em um arquivo CSV.
-
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://www.youtube.com/watch?v=NAAkIfLU3Qc)
+ 
 
 
-3- Remova o registro dos funcionários que desejar
 
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://www.youtube.com/watch?v=VOxP_RJ8zQc)
-
-4- Atualize o registro dos funcionários que desejar
-
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://youtu.be/9WJlcMV-MpM)
-
-5- Busca pelo menor salário
-
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://youtu.be/AwxTV0xR71Q)
-
-6- Busca pelo maior salário
-
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://www.youtube.com/watch?v=AwxTV0xR71Q)
-
-7- Busca pelo salário médio
-
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://youtu.be/qQ4e36506_4)
-
-
-8- Ordenação da lista
-
-[[Clique aqui para ver, no meu canal do Youtube, a execução dessa função]](https://www.youtube.com/watch?v=5q1Pzpltq9Q)
 
 
 ### Autor
 ---
 
-![Imagem do autor](https://media.licdn.com/dms/image/D4D35AQEaArHpYygSfQ/profile-framedphoto-shrink_400_400/0/1676827319640?e=1689030000&v=beta&t=EI9NzBKbjy56r1aFldNvym7GATPY5sQhvoPA90vGMhQ)
+![Imagem do autor](readmes/autor)
 
 
 
