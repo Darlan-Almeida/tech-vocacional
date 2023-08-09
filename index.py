@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify , session
+from flask_session import Session
 from control.test import realizar_teste
 from control.crud import inserir_dados, inserir_resposta, inserir_opiniao
 
 app = Flask(__name__)
-
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 
 @app.route('/')
@@ -19,26 +22,25 @@ def formulario():
 
     try:
         usuario_id = inserir_dados(nome, email, idade, escola)
-        return render_template('questionario.html', usuario_id=usuario_id)
+        session["usuario_id"] = usuario_id
+        return render_template('questionario.html', usuario_id=session["usuario_id"])
     except:
-        return "KeyError"
+        return "Error"
 
 
 @app.route('/submit/', methods=['POST'])
 def submit():
 
-    # usuario_id = int(request.form.get('usuario_id'))  # Obter o ID do usuário do formulário
 
     data = request.get_json()
     values = data['values']
-    usuario_id = data['usuario_id']
     print(values)
-    print(usuario_id)
+    print(session["usuario_id"])
 
     result = realizar_teste(values)
 
-    inserir_resposta(usuario_id, values[0], values[1], values[2], values[3], values[4], result)
-    return jsonify(result=result , usuario_id=usuario_id)
+    inserir_resposta(int(session["usuario_id"]) , values[0], values[1], values[2], values[3], values[4], result)
+    return jsonify(result=result)
 
 
 @app.route('/resultado/<result>' , methods=['GET'])
@@ -46,8 +48,6 @@ def resultado(result):
     descricao = ""
     imagem = ""
     link = ""
-
-    id = request.args.get("usuario_id")
 
     if result == "Desenvolvedor Back-end":
         descricao = "Um profissional especializado em desenvolvimento de software e sistemas que trabalha principalmente na parte do servidor, lidando com a lógica de negócios, bancos de dados e integração de sistemas"
@@ -80,7 +80,7 @@ def resultado(result):
         link = "https://blog.somostera.com/data-science/carreiras-em-dados-em-destaque-no-mercado"
         
 
-    return render_template('resultado.html', result=result, descricao=descricao, imagem=imagem, link=link, usuario_id=id)
+    return render_template('resultado.html', result=result, descricao=descricao, imagem=imagem, link=link, usuario_id=session["usuario_id"])
 
 
 @app.route('/receber_opiniao/',methods=['POST', 'GET'])
@@ -88,10 +88,9 @@ def receber_opiniao():
     if request.method == 'POST':
         data = request.get_json()
         opiniao = data.get('opiniao')
-        usuario_id = data.get('usuario_id')
         print(opiniao)
-        print(usuario_id)
-        inserir_opiniao(usuario_id, opiniao)
+        print(session["usuario_id"])
+        inserir_opiniao(session["usuario_id"], opiniao)
         return jsonify({'message': 'Opinião recebida com sucesso'})
 
 if __name__ == '__main__':
