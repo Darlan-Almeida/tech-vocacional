@@ -1,6 +1,5 @@
 var btn1 = document.querySelector('#green');
 var btn2 = document.querySelector('#red');
-var usuario_id = document.querySelector('#usuario_id').value;
 var clicado = false;
 var opiniao = null;
 
@@ -32,19 +31,6 @@ function mostrarOpiniao() {
   console.log(opiniao)
 }
 
-/*
-function enviarOpiniao(opiniao) {
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", "/resultado", true);
-  xhr.setRequestHeader("Content-Type", "application/json");
-  xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log("Opinião enviada com sucesso!");
-      }
-  };
-  xhr.send(JSON.stringify({opiniao}));
-}*/
-
 function enviar_opiniao(opiniao){
   // Enviar os valores selecionados para o Python
   fetch('/receber_opiniao/', {
@@ -52,7 +38,7 @@ function enviar_opiniao(opiniao){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ opiniao , usuario_id })
+    body: JSON.stringify({ opiniao })
   })
 
 

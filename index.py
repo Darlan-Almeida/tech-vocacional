@@ -34,6 +34,8 @@ def submit():
 
     data = request.get_json()
     values = data['values']
+    
+    #checando valores
     print(values)
     print(session["usuario_id"])
 
@@ -88,8 +90,11 @@ def receber_opiniao():
     if request.method == 'POST':
         data = request.get_json()
         opiniao = data.get('opiniao')
+
+        #checando valores
         print(opiniao)
         print(session["usuario_id"])
+        
         inserir_opiniao(session["usuario_id"], opiniao)
         return jsonify({'message': 'Opinião recebida com sucesso'})
 

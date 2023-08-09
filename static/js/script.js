@@ -7,7 +7,6 @@ import questions from "./questions.js";
 let currentIndex = 0;
 let answers2 = []
 
-let usuario_id = document.getElementById("usuario_id").value;
 let loading = document.querySelector(".loading-container");
 
 
@@ -19,7 +18,7 @@ function nextQuestion(e) {
     loadQuestion();
   } else {
     finish();
-    // getUsuario_id()
+    
   }
 }
 
@@ -32,12 +31,12 @@ function finish() {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ values, usuario_id })
+    body: JSON.stringify({ values })
   })
   .then(response => response.json())
   .then(data => {
     const result = data.result; // Receber o resultado do Python
-    window.location.href = `/resultado/${result}?usuario_id=${usuario_id}`; // Redirecionar para a página de resultado
+    window.location.href = `/resultado/${result}`; // Redirecionar para a página de resultado
   })
   .catch(error => {
     loading.style.display = 'none'
