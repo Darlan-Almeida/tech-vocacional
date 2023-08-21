@@ -1,0 +1,20 @@
+dict = {
+    "npouco": 1,
+    "upouco": 2,
+    "razoavelmente": 3,
+   "gosto": 4,
+    "adoro": 5,        
+    "pessima": 6,
+    "ruim": 7,
+    "mediana": 8,
+    "boa": 9,
+    "otima": 10,
+    "liderar": 11,
+    "pesquisa": 12,
+    "apresentar": 13,
+    "estilizar": 14,
+    "grafico": 15,
+    "enigma": 16,
+    "resumo": 17,
+    "pintar": 18
+}
