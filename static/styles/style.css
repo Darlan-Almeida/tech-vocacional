@@ -92,7 +92,11 @@ form [type="submit"]:hover{
     cursor: pointer;
 }
 
-input{
+select:invalid {
+    color: gray;
+  }
+
+input {
     margin-top: 20px;
     height: 20px;
     padding: 15px;
@@ -100,6 +104,16 @@ input{
     border: none;
     font-size: 15px;
 }
+
+select{
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border:none;
+    font-size:15px;
+}
+
+
 
 footer {
     margin-top: 60px; 

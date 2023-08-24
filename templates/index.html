@@ -22,24 +22,33 @@
             <h2><span>Registre-se</span></h2>
             <p>
                 Bem-vindo ao vocacional-tech! Por favor preecha os campos para que possamos, 
-                com bases nas informações, aprimorar o nosso teste!
+                com bases nas informações, aprimorar o nosso teste! Ao clicar em "continuar" você concorda com
+                os <a href="{{ url_for('termos') }}" target="_blank">nossos termos e serviços</a>
 
             </p>
-            <form action="/formulario" method="post" >
+            <form action="/formulario" method="post" onsubmit="validarEmail(event)">
                 <input type="text" placeholder="Nome" id="nome" name="nome" required>
                 <input type="email" placeholder="E-mail" id="email" name="email" required>
-                <input type="number" placeholder="Idade" id="idade" name="idade" required>
+                <select id="idade" name="idade" required>
+                    <option value="" disabled selected hidden>Idade</option>
+                    <option value="13">13 anos </option>
+                    <option value="14">14 anos</option>
+                    <option value="15">15 anos</option>
+                    <option value="16">16 anos</option>
+                    <option value="17">17 anos</option>
+                    <option value="18">+18 anos</option>
+                <select>
                 <input type="text" placeholder="Escola" id="escola" name="escola" required>
                 <input type="submit" value="Enviar >">
             </form>
         </aside>
 
         <article>
-            <img src="/static/components/images/77d0a7c454e658833800528e748edbe9.png" alt="mulher-roxa">
+            <img src="/static/components/images/tech.svg" alt="mulher-roxa">
         </article>
     </main>
 
     <footer>Desenvolvido por: <a href="https://darlan-almeida.github.io/portifolio/"> Darlan Almeida </a></footer>
-    
+    <script src="/static/js/forms_dados.js"></script>
 </body>
 </html>

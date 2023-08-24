@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify , session
+
 from flask_session import Session
 from control.test import realizar_teste
 from control.crud import inserir_dados, inserir_resposta, inserir_opiniao
@@ -12,6 +13,10 @@ Session(app)
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/termos/')
+def termos():
+    return render_template('termos.html')    
 
 @app.route('/formulario', methods=['POST'])
 def formulario():
@@ -97,6 +102,8 @@ def receber_opiniao():
         
         inserir_opiniao(session["usuario_id"], opiniao)
         return jsonify({'message': 'Opinião recebida com sucesso'})
+
+
 
 if __name__ == '__main__':
     app.run()
